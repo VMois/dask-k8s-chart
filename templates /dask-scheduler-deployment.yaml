@@ -28,12 +28,13 @@ spec:
         - name: {{ template "dask.fullname" . }}-scheduler
           image: "{{ .Values.scheduler.image.repository }}:{{ .Values.scheduler.image.tag }}"
           imagePullPolicy: {{ .Values.scheduler.image.pullPolicy }}
-          args:
-            - dask-scheduler
-            - --port
-            - "{{ .Values.scheduler.servicePort }}"
-            - --bokeh-port
-            - "8787"
+          command: ["cd /app && python dask-ks8.py"]
+          #args:
+          #  - dask-scheduler
+          #  - --port
+          #  - "{{ .Values.scheduler.servicePort }}"
+          #  - --bokeh-port
+          #  - "8787"
           ports:
             - containerPort: 8786
             - containerPort: 8787
