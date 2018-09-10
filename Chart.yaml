@@ -1,4 +1,4 @@
 apiVersion: v1
-name: dask-k8s
+name: dask
 version: 0.1.0
 description: Distributed dynamic cluster using dask-kubernetes
