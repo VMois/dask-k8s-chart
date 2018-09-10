@@ -1,0 +1,21 @@
+scheduler:
+  name: scheduler
+  image:
+    repository: "vmois/dask-kubernetes"
+    tag: "0.18.1"
+    pullPolicy: IfNotPresent
+  replicas: 1
+  serviceType: "LoadBalancer"
+  servicePort: 8786
+  resources: {}
+    # limits:
+    #   cpu: 1.8
+    #   memory: 6G
+    # requests:
+    #   cpu: 1.8
+    #   memory: 6G
+
+webUI:
+  name: webui
+  servicePort: 80
+
