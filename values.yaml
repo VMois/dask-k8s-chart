@@ -2,8 +2,8 @@ scheduler:
   name: scheduler
   image:
     repository: "vmois/dask-k8s"
-    tag: "0.1.0"
-    pullPolicy: IfNotPresent
+    tag: "latest"
+    pullPolicy: Always
   replicas: 1
   serviceType: "LoadBalancer"
   servicePort: 8786
@@ -15,4 +15,7 @@ scheduler:
     #   cpu: 1.8
     #   memory: 6G
 
-
+webUI:
+  name: webui
+  servicePort: 80
+  containerPort: 8787
