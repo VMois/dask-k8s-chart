@@ -1,1 +1,7 @@
-Test notes. Welcome!
+Helm chart for setting up dynamic Dask cluster on Kubernetes.
+
+How to connect to Dask scheduler?
+1. If you are using local Kubernetes installation (aka Minikube),
+use Kuberntes cluster IP and check port using `kubectl get services`.
+2. If your cluster is able to setup public IP then check IP using `kubectl get services`,
+and connect to port 8786
