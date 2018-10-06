@@ -16,7 +16,11 @@ scheduler:
       memory: 1G
   env:
     - name: DASK_ALLOWED_FAILURES
-      value: 20
+      value: "20"
+    - name: DASK_CLUSTER_STARTUP_COST
+      value: "10s"
+    - name: DASK_CLUSTER_TARGET_DURATION
+      value: "10s"
 
 webUI:
   name: webui
