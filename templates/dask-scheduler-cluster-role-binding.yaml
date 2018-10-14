@@ -1,0 +1,13 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: dask-cluster-scheduler
+subjects:
+- kind: ServiceAccount
+  name: dask-cluster-scheduler
+  namespace: default
+  apiGroup: ""
+roleRef:
+  kind: ClusterRole
+  name: dask-cluster-scheduler
+  apiGroup: rbac.authorization.k8s.io

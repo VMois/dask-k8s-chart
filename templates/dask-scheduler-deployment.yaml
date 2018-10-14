@@ -9,6 +9,7 @@ metadata:
     chart: {{ template "dask.chart" . }}
     component: scheduler
 spec:
+  serviceAccountName: dask-cluster-scheduler
   replicas: {{ .Values.scheduler.replicas }}
   selector:
     matchLabels:
@@ -24,6 +25,7 @@ spec:
         release: {{ .Release.Name | quote }}
         component: scheduler
     spec:
+      serviceAccountName: dask-cluster-scheduler
       containers:
         - name: {{ template "dask.fullname" . }}-scheduler
           image: "{{ .Values.scheduler.image.repository }}:{{ .Values.scheduler.image.tag }}"
