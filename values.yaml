@@ -9,11 +9,11 @@ scheduler:
   servicePort: 8786
   resources:
     limits:
-      cpu: "0.5"
-      memory: 1G
+      cpu: "1"
+      memory: 4G
     requests:
-      cpu: "0.5"
-      memory: 1G
+      cpu: "1"
+      memory: 4G
   env:
     - name: DASK_ALLOWED_FAILURES
       value: "20"
