@@ -4,7 +4,7 @@ Currently, under active development. **Not suitable for production use!**
 
 ## Description
 
-The Helm chart for simple and fast setup of auto-scaling [Dask](https://github.com/dask/distributed) cluster on Kubernetes for scientific computations.
+The Helm chart for simple and fast setup of auto-scaling [Dask](https://github.com/dask/distributed) cluster on Kubernetes.
 
 This project is created with help of:
 
@@ -14,13 +14,25 @@ This project is created with help of:
 
 ## How it works
 
-The chart will set up a Kubernetes deployment with a single pod called *scheduler* (based on this [Docker custom image](https://github.com/VMois/dask-k8s-docker/tree/master/scheduler)). The pod will have two ports exposed:
+The chart will set up a Kubernetes deployment with a single pod called *scheduler* 
+with permissions to create other pods in the **default** namespace. 
+The chart is using docker images from [this](https://github.com/VMois/dask-k8s-docker/tree/master/) repo. 
+The scheduler will have two ports exposed:
 
-- **8786** for client connections (check [Dask docs](https://distributed.readthedocs.io/en/latest/client.html) for more info)
+- **8786** for client connections
 - **8787** for web dashboard
 
-By default, the scheduler pod will launch 1 *worker* pod (based on this [Docker custom image](https://github.com/VMois/dask-k8s-docker/tree/master/worker)). 
-After connecting to the cluster, you will be able to run different tasks using Dask interface. 
+By default, the scheduler pod will launch 1 *worker* pod. 
+A worker will automatically connects to the scheduler.
+
+To check external IP address of the scheduler in Kubernetes use:
+
+```bash
+$ kubectl get services
+```
+
+Now, you can use this address and connect to the scheduler.
+After that you can refer to Dask Distributed [docs](https://distributed.readthedocs.io/en/latest/client.html) to perform computations.
 The scheduler will automatically scale worker pods according to CPU and memory usage.
 
 ## Use cases
@@ -42,6 +54,10 @@ git clone https://github.com/VMois/dask-k8s-chart.git
 ```bash
 helm install dask-k8s-chart/ --name RELEASE_NAME
 ```
+
+## How to customize
+
+Later...
 
 ## Contributions
 
