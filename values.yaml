@@ -21,6 +21,8 @@ scheduler:
       value: "10s"
     - name: DASK_CLUSTER_TARGET_DURATION
       value: "10s"
+    - name: DASK_CLUSTER_MAX_WORKERS
+      value: "18"
 
 webUI:
   name: webui
